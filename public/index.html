@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c0392b">
+  <meta name="description" content="Lis kookt - Mijn receptenverzameling">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <title>Lis kookt</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1 id="logo" title="Terug naar overzicht">Lis kookt</h1>
+      <button id="btn-add" class="btn-primary" title="Nieuw recept">+ Recept</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- Recepten overzicht -->
+    <section id="view-list">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Zoek een recept..." autocomplete="off">
+      </div>
+      <div class="category-filter">
+        <button class="cat-btn active" data-cat="alle">Alle</button>
+        <button class="cat-btn" data-cat="voorgerecht">Voorgerecht</button>
+        <button class="cat-btn" data-cat="hoofdgerecht">Hoofdgerecht</button>
+        <button class="cat-btn" data-cat="dessert">Dessert</button>
+        <button class="cat-btn" data-cat="soep">Soep</button>
+        <button class="cat-btn" data-cat="salade">Salade</button>
+        <button class="cat-btn" data-cat="snack">Snack</button>
+        <button class="cat-btn" data-cat="overig">Overig</button>
+      </div>
+      <div id="recipes-grid" class="recipes-grid">
+        <!-- Receptkaarten worden hier dynamisch geladen -->
+      </div>
+      <p id="no-results" class="no-results hidden">Geen recepten gevonden.</p>
+    </section>
+
+    <!-- Recept toevoegen/bewerken -->
+    <section id="view-form" class="hidden">
+      <h2 id="form-title">Nieuw recept</h2>
+
+      <div class="paste-section">
+        <label for="paste-area">Plak hier je recept uit Word:</label>
+        <textarea id="paste-area" rows="6" placeholder="Plak hier de tekst uit Word en verdeel het daarna over de velden hieronder..."></textarea>
+      </div>
+
+      <form id="recipe-form">
+        <input type="hidden" id="recipe-id">
+
+        <div class="form-group">
+          <label for="recipe-title">Titel *</label>
+          <input type="text" id="recipe-title" required placeholder="Naam van het recept">
+        </div>
+
+        <div class="form-group">
+          <label for="recipe-category">Categorie</label>
+          <select id="recipe-category">
+            <option value="overig">Overig</option>
+            <option value="voorgerecht">Voorgerecht</option>
+            <option value="hoofdgerecht">Hoofdgerecht</option>
+            <option value="dessert">Dessert</option>
+            <option value="soep">Soep</option>
+            <option value="salade">Salade</option>
+            <option value="snack">Snack</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="recipe-ingredients">Ingrediënten</label>
+          <textarea id="recipe-ingredients" rows="8" placeholder="Eén ingrediënt per regel"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="recipe-instructions">Bereidingswijze</label>
+          <textarea id="recipe-instructions" rows="10" placeholder="Beschrijf de bereidingsstappen..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="recipe-image">Afbeelding URL (optioneel)</label>
+          <input type="url" id="recipe-image" placeholder="https://voorbeeld.nl/foto.jpg">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Opslaan</button>
+          <button type="button" id="btn-cancel" class="btn-secondary">Annuleren</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Recept detail -->
+    <section id="view-detail" class="hidden">
+      <div class="detail-actions">
+        <button id="btn-back" class="btn-secondary">&larr; Terug</button>
+        <div>
+          <button id="btn-edit" class="btn-primary">Bewerken</button>
+          <button id="btn-delete" class="btn-danger">Verwijderen</button>
+        </div>
+      </div>
+      <article id="recipe-detail">
+        <!-- Wordt dynamisch gevuld -->
+      </article>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
