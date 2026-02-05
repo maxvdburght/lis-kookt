@@ -40,7 +40,8 @@ app.get('/api/recipes', async (req, res) => {
     const recipes = await Recipe.find(filter).sort({ createdAt: -1 });
     res.json(recipes);
   } catch (err) {
-    res.status(500).json({ error: 'Fout bij ophalen recepten' });
+    console.error('Ophalen fout:', err);
+    res.status(500).json({ error: 'Fout bij ophalen recepten', details: err.message });
   }
 });
 
@@ -74,7 +75,8 @@ app.post('/api/recipes', async (req, res) => {
     const saved = await recipe.save();
     res.status(201).json(saved);
   } catch (err) {
-    res.status(500).json({ error: 'Fout bij opslaan recept' });
+    console.error('Opslaan fout:', err);
+    res.status(500).json({ error: 'Fout bij opslaan recept', details: err.message });
   }
 });
 
