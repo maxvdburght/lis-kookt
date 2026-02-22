@@ -117,8 +117,8 @@ function renderRecipes(recipes) {
         : `<div class="recipe-card-placeholder">${categoryIcons[r.category] || '📖'}</div>`
       }
       <div class="recipe-card-body">
-        <h3>${escapeHtml(r.title)}</h3>
         <span class="recipe-card-category">${escapeHtml(r.category)}</span>
+        <h3>${escapeHtml(r.title)}</h3>
       </div>
     </div>
   `).join('');
@@ -143,21 +143,11 @@ async function openRecipe(id) {
 }
 
 function renderDetail(recipe) {
-  const categoryIcons = {
-    voorgerecht: '🥗',
-    hoofdgerecht: '🍽️',
-    dessert: '🍰',
-    soep: '🍲',
-    salade: '🥬',
-    snack: '🍿',
-    overig: '📖'
-  };
-
   recipeDetail.innerHTML = `
     ${recipe.imageUrl ? `<img class="detail-image" src="${escapeHtml(recipe.imageUrl)}" alt="${escapeHtml(recipe.title)}" onerror="this.style.display='none'">` : ''}
     <div class="detail-content">
+      <span class="detail-category">${escapeHtml(recipe.category)}</span>
       <h2>${escapeHtml(recipe.title)}</h2>
-      <span class="detail-category">${categoryIcons[recipe.category] || '📖'} ${escapeHtml(recipe.category)}</span>
 
       ${recipe.ingredients ? `
         <div class="detail-section">

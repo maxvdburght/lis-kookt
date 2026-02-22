@@ -4,8 +4,8 @@
   "description": "Mijn receptenverzameling",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#faf6f2",
-  "theme_color": "#c0392b",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "orientation": "portrait-primary",
   "icons": [
     {
